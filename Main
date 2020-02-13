@@ -1,0 +1,41 @@
+import java.io.*;
+
+/* 
+Шифр Цезаря
+*/
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        String string = "Шифр Цезаря - это просто сдвиг по алфавиту на n букв";
+        StringReader reader = new StringReader(string);
+        String code = code(reader, -33000);
+        StringReader reader2 = new StringReader(code);
+        System.out.println("Строка \"Шифр Цезаря - это просто сдвиг по алфавиту на n букв\" в зашифрованном виде будет выглядеть " +
+                "следующим образом:");
+        System.out.println(code);
+        String decode = decode(reader2, 33000);
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("А это снова в расшифрованном:");
+        System.out.println(decode);
+    }
+
+    public static String code(StringReader reader, int key) throws IOException {
+        BufferedReader br = new BufferedReader(reader);
+        int i = 0;
+        StringWriter stringWriter = new StringWriter();
+        while ((i = br.read()) != -1) {
+            stringWriter.write(i + key);
+        }
+        return stringWriter.toString();
+    }
+
+    public static String decode(StringReader reader, int key) throws IOException {
+        BufferedReader br = new BufferedReader(reader);
+        int i = 0;
+        StringWriter stringWriter = new StringWriter();
+        while ((i = br.read()) != -1) {
+            stringWriter.write(i + key);
+        }
+        return stringWriter.toString();
+    }
+}
